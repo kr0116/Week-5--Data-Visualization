@@ -1,0 +1,40 @@
+---
+title: "ANA 515 Week 5"
+author: Karthikeyan Rajendran
+date: 2021
+output: 
+html_document:
+  theme:
+    bootswatch: Darkly
+---
+
+
+```{r setup, include = FALSE}
+
+library(ggplot2)
+```
+
+```{r, include = TRUE}
+#The data has 13 different drug across 17 different age groups. It is about the drug usage across different age groups. This data is collected from the 'National survey on drug use and health from the substance abuse and mental health data archive'.The data is stored as .csv file and it has 18 lines containing age groups and drug usage. From this data we can find out which drug is mostly used and/or which age groups moslty use the drug. The data set has the information of age and drug usage of last 12 months.  
+```
+
+```{r, include = TRUE}
+location <- "https://raw.githubusercontent.com/fivethirtyeight/data/master/drug-use-by-age/drug-use-by-age.csv"
+druguse <- read.csv(location)
+# read.csv() R function is being used to read the data. It comes from R utils package which is installed by default.
+```
+
+```{r, include = TRUE}
+ggplot(data = druguse, aes(x = age, y = n)) +
+      geom_bar(stat = "identity", fill = "red") +
+      labs(title = "Drug usage across age groups",
+                     x = "Age", y = "Total number of people")
+```
+
+```{r, include = TRUE}
+plot(druguse$age, druguse$alcohol.use, main = "Alcohol use by age",
+     xlab = "age", ylab = "acohol use",
+     pch = 19, frame = FALSE)
+# From the graph it is noted that the consumption of alcohol increases as the age increase. 
+```
+
